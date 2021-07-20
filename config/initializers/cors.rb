@@ -6,7 +6,7 @@ Rack::Cors do
   # end
 
   allow do
-    origins "*"
+    origins "https://beanstalk-api.herokuapp.com/*"
     resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: false
   end
 end

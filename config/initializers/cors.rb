@@ -7,6 +7,6 @@ Rack::Cors do
 
   allow do
     origins "*"
-    resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
+    resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: false
   end
 end

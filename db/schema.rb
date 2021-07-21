@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_18_040209) do
+ActiveRecord::Schema.define(version: 2021_07_21_084345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  dcreate_table "roasters", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "body"
+    t.bigint "roast_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["roast_id"], name: "index_comments_on_roast_id"
+  end
+
+  create_table "roasters", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "img_url"
@@ -30,4 +40,20 @@ ActiveRecord::Schema.define(version: 2021_07_18_040209) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "roasts", force: :cascade do |t|
+    t.string "name"
+    t.string "picture"
+    t.string "notes"
+    t.string "origin"
+    t.string "description"
+    t.bigint "roaster_id", null: false
+    t.string "beanType"
+    t.string "productionDate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["roaster_id"], name: "index_roasts_on_roaster_id"
+  end
+
+  add_foreign_key "comments", "roasts"
+  add_foreign_key "roasts", "roasters"
 end

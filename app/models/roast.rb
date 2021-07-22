@@ -1,4 +1,4 @@
 class Roast < ApplicationRecord
   belongs_to :roaster
-  has_many :comment, dependent: :destroy
+  has_many :comment, as: :commented_on
 end

@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2021_07_22_194735) do
 
-ActiveRecord::Schema.define(version: 2021_07_21_084345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.string "title"
     t.string "author"
-    t.string "body"
-    t.bigint "roast_id", null: false
+    t.text "body"
+    t.bigint "roasts_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["roast_id"], name: "index_comments_on_roast_id"
-
+    t.index ["roasts_id"], name: "index_comments_on_roasts_id"
+  end
 
   create_table "photos", force: :cascade do |t|
     t.string "image"
@@ -57,10 +57,19 @@ ActiveRecord::Schema.define(version: 2021_07_21_084345) do
     t.string "productionDate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-   t.index ["roaster_id"], 
-   name: "index_roasts_on_roaster_id"
+    t.boolean "published"
+    t.index ["roaster_id"], name: "index_roasts_on_roaster_id"
   end
 
-  add_foreign_key "comments", "roasts"
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.string "img_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "comments", "roasts", column: "roasts_id"
   add_foreign_key "roasts", "roasters"
 end

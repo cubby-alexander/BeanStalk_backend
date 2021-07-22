@@ -15,7 +15,7 @@ class RegistrationsController < ApplicationController
         status: :created,
         roaster: roaster
     } 
-    else 
+    else
       render json: {
       status: 500
       }

@@ -8,10 +8,6 @@ Rails.application.routes.draw do
     end
   end
 
- 
-
-
- 
 
   resources :sessions, only: [:create]
   resources :photos

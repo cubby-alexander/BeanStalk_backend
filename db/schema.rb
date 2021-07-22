@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2021_07_21_235929) do
     t.index ["roast_id"], name: "index_comments_on_roast_id"
   end
 
+
   create_table "photos", force: :cascade do |t|
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
@@ -57,8 +58,8 @@ ActiveRecord::Schema.define(version: 2021_07_21_235929) do
     t.string "productionDate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "published"
-    t.index ["roaster_id"], name: "index_roasts_on_roaster_id"
+   t.index ["roaster_id"], 
+   name: "index_roasts_on_roaster_id"
   end
 
   add_foreign_key "comments", "roasts"

@@ -1,5 +1,5 @@
 class Roaster < ApplicationRecord
-  has_many :roast
+  has_many :roast, dependent: :destroy
 
   has_secure_password
 

@@ -3,11 +3,15 @@
 one:
   title: MyString
   author: MyString
-  body: MyString
-  roast: one
+  body: MyText
+  commented_on_id: 1
+  commented_on_type: MyString
+  User: one
 
 two:
   title: MyString
   author: MyString
-  body: MyString
-  roast: two
+  body: MyText
+  commented_on_id: 1
+  commented_on_type: MyString
+  User: two

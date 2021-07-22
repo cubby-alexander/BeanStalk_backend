@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  picture: MyString
+  type: 
+  notes: MyString
+  origin: MyString
+  description: MyString
+  roaster: one
+  beanType: MyString
+  productionDate: MyString
+
+two:
+  name: MyString
+  picture: MyString
+  type: 
+  notes: MyString
+  origin: MyString
+  description: MyString
+  roaster: two
+  beanType: MyString
+  productionDate: MyString

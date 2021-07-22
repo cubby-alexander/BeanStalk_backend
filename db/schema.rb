@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_07_22_194735) do
-=======
-ActiveRecord::Schema.define(version: 2021_07_21_235929) do
->>>>>>> 5bfd441fe3d593215b6b63307c2b991e0f8ca4ee
+ActiveRecord::Schema.define(version: 2021_07_22_203935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,14 +19,14 @@ ActiveRecord::Schema.define(version: 2021_07_21_235929) do
     t.string "title"
     t.string "author"
     t.text "body"
-    t.bigint "roasts_id", null: false
+    t.string "commented_on_type"
+    t.bigint "roast_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-
     t.index ["roast_id"], name: "index_comments_on_roast_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
-
-
 
   create_table "photos", force: :cascade do |t|
     t.string "image"
@@ -72,11 +68,11 @@ ActiveRecord::Schema.define(version: 2021_07_21_235929) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.string "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "comments", "roasts", column: "roasts_id"
+  add_foreign_key "comments", "roasts"
+  add_foreign_key "comments", "users"
   add_foreign_key "roasts", "roasters"
 end

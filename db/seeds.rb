@@ -35,11 +35,20 @@ end
   )
 end
 
+20.times do
+  User.create(
+    name: Faker::Name::name,
+    email: Faker::Internet::email,
+    password_digest: "123",
+  )
+end
+
 50.times do
   Comment.create(
     title: Faker::Lorem.word,
     author: Faker::Name.name,
     body: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
-    roast_id: Faker::Number.between(from: 1, to: 20) 
+    user_id: 1,
+    roast_id: Faker::Number.between(from: 1, to: 20)
   )
 end

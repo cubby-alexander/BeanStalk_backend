@@ -1,8 +1,13 @@
 class RoastersController < ApplicationController
 
   def index
-   roasters =  Roaster.all
-   render json: {status: 200, roaster: roasters}
+   roasters =  Roaster.all.includes(:roast)
+   roasters_with_associations = roasters.map do |roaster|
+     roaster.attributes.merge(
+       'roast' => roaster.roast
+     )
+   end
+   render json: {status: 200, roaster: roasters_with_associations}
   end
 
   def show 

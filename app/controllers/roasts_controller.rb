@@ -1,7 +1,7 @@
 class RoastsController < ApplicationController
 
   def index
-    roasts = Roaster.find(params[:roaster_id]).roast.all
+    roasts = Roaster.find(params[:roaster_id]).roast
     render json: { status: 200, roasts: roasts }
   end
 

@@ -1,5 +1,5 @@
 class Roaster < ApplicationRecord
-  has_many :roasts
+  has_many :roast
 
   has_secure_password
 

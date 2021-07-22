@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_07_22_194735) do
+=======
+ActiveRecord::Schema.define(version: 2021_07_21_235929) do
+>>>>>>> 5bfd441fe3d593215b6b63307c2b991e0f8ca4ee
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +26,11 @@ ActiveRecord::Schema.define(version: 2021_07_22_194735) do
     t.bigint "roasts_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["roasts_id"], name: "index_comments_on_roasts_id"
+
+    t.index ["roast_id"], name: "index_comments_on_roast_id"
   end
+
+
 
   create_table "photos", force: :cascade do |t|
     t.string "image"

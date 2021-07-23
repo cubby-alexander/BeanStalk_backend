@@ -21,15 +21,25 @@ include CurrentRoasterConcern
 
   def create
     roaster = Roaster
-    .find_by(email: params['roaster']["email"])
-    .try(:authenticate, params["roaster"]["password"])
+    .find_by(email: params['account']["email"])
+    .try(:authenticate, params["account"]["password"])
 
-    if roaster 
+    user = User.find_by(email: params['account']['email'])
+             .try(:authenticate, params["account"]["password"])
+
+    if roaster
       session[:roaster_id] = roaster.id
       render json: {
         status: :created,
         logged_in: true,
         roaster: roaster
+      }
+    elsif user
+      session[:user_id] = user.id
+      render json: {
+        status: :created,
+        logged_in: true,
+        user: user
       }
     else
       render json: {status: 401}
